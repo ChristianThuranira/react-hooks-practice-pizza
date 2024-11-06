@@ -1,7 +1,32 @@
 import React from "react";
 import Pizza from "./Pizza";
+import Pizzadata from "../Data";
+import Button from "./Button";
 
 function PizzaList() {
+  const displayData = Pizzadata.map((data, index)=>{
+    return <tr key={index}>
+     <td>
+      {
+        data.topping      
+      }
+     </td>
+     <td>
+      {
+        data.size      
+      }
+     </td>
+     <td>
+      {
+        data.vegetarian      
+      }
+     </td>
+     <td>
+      <Button/>
+     </td>
+    </tr> 
+  })
+
   return (
     <table className="table table-striped">
       <thead>
@@ -14,7 +39,7 @@ function PizzaList() {
       </thead>
       <tbody>
         {
-          //render Pizza here
+          displayData
         }
       </tbody>
     </table>
