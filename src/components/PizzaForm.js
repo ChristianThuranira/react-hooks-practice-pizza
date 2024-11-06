@@ -1,24 +1,21 @@
 import React from "react";
-import { useState } from "react";
 
-function PizzaForm({handleChange, handleSubmit}) {
-  const [pizzaInput,setPizzaInput]=useState()
+function PizzaForm({ formData, handleChange, handleSubmit }) {
   return (
-    <form onSubmit={handleSubmit /*handle that submit*/}>
+    <form onSubmit={handleSubmit}>
       <div className="form-row">
         <div className="col-5">
           <input
             className="form-control"
             type="text"
-            name="topping"
-            placeholder="Pizza Topping"
-            onChange={(event)=>{setPizzaInput (event.target.value);
-              console.log (pizzaInput)}}
-              value={pizzaInput}
+            name="name"
+            placeholder="Pizza Name"
+            onChange={handleChange}
+            value={formData.name}
           />
         </div>
         <div className="col">
-          <select className="form-control" name="size" onChange={handleChange}>            
+          <select className="form-control" name="size" onChange={handleChange} value={formData.size}>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -32,6 +29,7 @@ function PizzaForm({handleChange, handleSubmit}) {
               name="vegetarian"
               value="Vegetarian"
               onChange={handleChange}
+              checked={formData.vegetarian === "Vegetarian"}
             />
             <label className="form-check-label">Vegetarian</label>
           </div>
@@ -42,13 +40,14 @@ function PizzaForm({handleChange, handleSubmit}) {
               name="vegetarian"
               value="Not Vegetarian"
               onChange={handleChange}
+              checked={formData.vegetarian === "Not Vegetarian"}
             />
             <label className="form-check-label">Not Vegetarian</label>
           </div>
         </div>
         <div className="col">
           <button type="submit" className="btn btn-success">
-            Submit
+            {formData.name ? "Update" : "Add"} Pizza
           </button>
         </div>
       </div>

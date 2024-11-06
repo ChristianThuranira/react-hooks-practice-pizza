@@ -1,31 +1,20 @@
 import React from "react";
-import Pizza from "./Pizza";
-import Pizzadata from "../Data";
 import Button from "./Button";
 
-function PizzaList() {
-  const displayData = Pizzadata.map((data, index)=>{
-    return <tr key={index}>
-     <td>
-      {
-        data.topping      
-      }
-     </td>
-     <td>
-      {
-        data.size      
-      }
-     </td>
-     <td>
-      {
-        data.vegetarian      
-      }
-     </td>
-     <td>
-      <Button/>
-     </td>
-    </tr> 
-  })
+function PizzaList({ pizzas, handleDelete, handleEdit }) {
+  const displayData = pizzas.map((data, index) => {
+    return (
+      <tr key={index}>
+        <td>{data.name}</td>
+        <td>{data.size}</td>
+        <td>{data.vegetarian}</td>
+        <td>
+          {/* Pass the edit and delete handlers to each button */}
+          <Button onEdit={() => handleEdit(index)} onDelete={() => handleDelete(index)} />
+        </td>
+      </tr>
+    );
+  });
 
   return (
     <table className="table table-striped">
@@ -37,11 +26,7 @@ function PizzaList() {
           <th scope="col">Edit</th>
         </tr>
       </thead>
-      <tbody>
-        {
-          displayData
-        }
-      </tbody>
+      <tbody>{displayData}</tbody>
     </table>
   );
 }

@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
-function Button() {
+function Button({ onEdit, onDelete }) {
   return (
     <div>
-        <button>
-            Edit Pizza
-        </button>
+      <button className="btn btn-primary" onClick={onEdit}>
+        Edit
+      </button>
+      <button className="btn btn-danger" onClick={onDelete}>
+        Delete
+      </button>
     </div>
-  )
+  );
 }
 
-export default Button
+export default Button;
