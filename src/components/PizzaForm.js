@@ -12,10 +12,13 @@ function PizzaForm({ formData, handleChange, handleSubmit }) {
             placeholder="Pizza Name"
             onChange={handleChange}
             value={formData.name}
+            required
           />
         </div>
         <div className="col">
-          <select className="form-control" name="size" onChange={handleChange} value={formData.size}>
+          <select className="form-control" name="size" onChange={handleChange} value={formData.size} required>
+          
+            <option value=""disabled hidden>Choose Size</option>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -29,6 +32,7 @@ function PizzaForm({ formData, handleChange, handleSubmit }) {
               name="vegetarian"
               value="Vegetarian"
               onChange={handleChange}
+              required
               checked={formData.vegetarian === "Vegetarian"}
             />
             <label className="form-check-label">Vegetarian</label>
@@ -41,6 +45,7 @@ function PizzaForm({ formData, handleChange, handleSubmit }) {
               value="Not Vegetarian"
               onChange={handleChange}
               checked={formData.vegetarian === "Not Vegetarian"}
+              required
             />
             <label className="form-check-label">Not Vegetarian</label>
           </div>
